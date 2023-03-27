@@ -17,6 +17,11 @@ class Query:
         bucket = self.buckets[hashed]
         if string not in bucket:
             self.buckets[hashed] = [string] + [string2] + bucket
+        else:
+            for i in range(0,len(bucket)-1,2):
+                if bucket[i] == string:
+                    bucket[i+1] = string2
+
 
     def delete(self, string):
         hashed = self._hash_func(string)
